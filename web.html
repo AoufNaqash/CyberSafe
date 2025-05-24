@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe Campus - Protecting Your Digital Future</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "🛡️";
+            margin-right: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 2rem 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cyber" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23cyber)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Quick Assessment */
+        .quick-assessment {
+            background: #f8f9fa;
+            padding: 80px 2rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .assessment-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .assessment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .question {
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .question h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .option {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #e3f2fd;
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* Program Features */
+        .features {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            color: #666;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Statistics */
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: #f8f9fa;
+            padding: 80px 2rem;
+            text-align: center;
+        }
+
+        .cta-card {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Results Display */
+        .results {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .score {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .recommendations {
+            background: white;
+            color: #333;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CyberSafe Campus</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+                <li><a href="#program">Program</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 class="floating">CyberSafe Campus</h1>
+            <p>Protecting Your Digital Future, One Student at a Time</p>
+            <button class="cta-button" onclick="scrollToAssessment()">
+                Take Security Assessment
+            </button>
+        </div>
+    </section>
+
+    <section id="assessment" class="quick-assessment">
+        <div class="container">
+            <h2>Quick Cybersecurity Assessment</h2>
+            <p>Discover your current cybersecurity knowledge level in just 5 minutes</p>
+            
+            <div class="assessment-card">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+                
+                <div id="questionContainer">
+                    <div class="question">
+                        <h3>Question 1 of 5: Password Security</h3>
+                        <p>Which of the following is the strongest password?</p>
+                        <div class="options">
+                            <div class="option" onclick="selectOption(this, 1)">Password123!</div>
+                            <div class="option" onclick="selectOption(this, 3)">M0th3r$M@id3n!987</div>
+                            <div class="option" onclick="selectOption(this, 2)">sunshine2024</div>
+                            <div class="option" onclick="selectOption(this, 1)">qwerty</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="nextButton" class="cta-button" onclick="nextQuestion()" style="margin-top: 2rem; opacity: 0.5;" disabled>
+                    Next Question
+                </button>
+                
+                <div id="results" class="results hidden">
+                    <div class="score" id="scoreDisplay">0/5</div>
+                    <h3>Your Cybersecurity Level: <span id="levelDisplay">Beginner</span></h3>
+                    <p id="scoreMessage">Great job on taking the first step!</p>
+                    
+                    <div class="recommendations">
+                        <h4>Personalized Recommendations:</h4>
+                        <ul id="recommendationsList">
+                        </ul>
+                        <button class="cta-button" onclick="enrollNow()" style="margin-top: 1rem;">
+                            Enroll in CyberSafe Campus Program
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="program" class="features">
+        <div class="container">
+            <h2>Why Choose CyberSafe Campus?</h2>
+            <p>Our comprehensive program is designed specifically for university students</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Targeted Learning</h3>
+                    <p>Content specifically designed for university students' digital lifestyles and threats they commonly face</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Interactive & Engaging</h3>
+                    <p>Gamified learning with hands-on simulations, real-world scenarios, and peer collaboration</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Expert-Led Training</h3>
+                    <p>Learn from cybersecurity professionals and academic experts with real industry experience</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Practical Skills</h3>
+                    <p>Hands-on workshops covering password managers, 2FA setup, safe browsing, and more</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Flexible Learning</h3>
+                    <p>Hybrid delivery with both in-person workshops and online resources accessible 24/7</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Career Ready</h3>
+                    <p>Gain valuable cybersecurity knowledge and certification to enhance your resume</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <h2>Program Impact</h2>
+            <div class="stats-grid">
+                <div>
+                    <span class="stat-number">88%</span>
+                    <span class="stat-label">Students Experience Cyber Threats</span>
+                </div>
+                <div>
+                    <span class="stat-number">67%</span>
+                    <span class="stat-label">Reduction in Phishing Success</span>
+                </div>
+                <div>
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Students Trained Annually</span>
+                </div>
+                <div>
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Core Workshop Sessions</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ready to Secure Your Digital Future?</h2>
+                <p>Join hundreds of students who have already strengthened their cybersecurity knowledge and skills through our comprehensive program.</p>
+                <button class="cta-button" onclick="enrollNow()" style="margin-top: 2rem;">
+                    Enroll Now - Next Cohort Starts Soon!
+                </button>
+                <p style="margin-top: 1rem; color: #666;">
+                    📧 cybersafe@university.edu | 📞 (555) 123-CYBER
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#program">Program Details</a>
+                <a href="#assessment">Security Assessment</a>
+                <a href="mailto:cybersafe@university.edu">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <p>&copy; 2024 CyberSafe Campus Program. All rights reserved.</p>
+            <p>Empowering students to navigate the digital world safely and confidently.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = [];
+
+        const questions = [
+            {
+                question: "Password Security",
+                text: "Which of the following is the strongest password?",
+                options: ["Password123!", "M0th3r$M@id3n!987", "sunshine2024", "qwerty"],
+                correct: 1,
+                explanation: "Strong passwords use a mix of letters, numbers, symbols, and are long enough to resist attacks."
+            },
+            {
+                question: "Phishing Detection",
+                text: "Which is the biggest red flag in an email claiming to be from your bank?",
+                options: [
+                    "Generic greeting like 'Dear Customer'",
+                    "Urgent request to verify account information",
+                    "Suspicious sender email address",
+                    "All of the above"
+                ],
+                correct: 3,
+                explanation: "All of these are major red flags that indicate a potential phishing attempt."
+            },
+            {
+                question: "Wi-Fi Security",
+                text: "What should you avoid doing on public Wi-Fi?",
+                options: [
+                    "Checking social media",
+                    "Online banking or shopping",
+                    "Reading news websites",
+                    "Listening to music"
+                ],
+                correct: 1,
+                explanation: "Financial transactions on public Wi-Fi can expose sensitive information to attackers."
+            },
+            {
+                question: "Social Media Privacy",
+                text: "What's the safest approach to sharing personal information on social media?",
+                options: [
+                    "Share everything with friends only",
+                    "Make all posts public for maximum engagement",
+                    "Limit personal details and use privacy settings",
+                    "Only share information in direct messages"
+                ],
+                correct: 2,
+                explanation: "Limiting personal information and using privacy settings provides the best protection."
+            },
+            {
+                question: "Software Updates",
+                text: "How often should you update your software and apps?",
+                options: [
+                    "Only when they stop working",
+                    "Once a year",
+                    "As soon as updates become available",
+                    "Only major version updates"
+                ],
+                correct: 2,
+                explanation: "Regular updates patch security vulnerabilities and should be installed promptly."
+            }
+        ];
+
+        function selectOption(element, answerIndex) {
+            // Remove previous selections
+            element.parentNode.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Select current option
+            element.classList.add('selected');
+            userAnswers[currentQuestion] = answerIndex;
+            
+            // Enable next button
+            document.getElementById('nextButton').disabled = false;
+            document.getElementById('nextButton').style.opacity = '1';
+        }
+
+        function nextQuestion() {
+            // Check if answer is correct
+            if (userAnswers[currentQuestion] === questions[currentQuestion].correct) {
+                score++;
+            }
+
+            currentQuestion++;
+            updateProgressBar();
+
+            if (currentQuestion < questions.length) {
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function displayQuestion() {
+            const container = document.getElementById('questionContainer');
+            const question = questions[currentQuestion];
+            
+            container.innerHTML = `
+                <div class="question">
+                    <h3>Question ${currentQuestion + 1} of ${questions.length}: ${question.question}</h3>
+                    <p>${question.text}</p>
+                    <div class="options">
+                        ${question.options.map((option, index) => 
+                            `<div class="option" onclick="selectOption(this, ${index})">${option}</div>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
+            
+            // Reset next button
+            document.getElementById('nextButton').disabled = true;
+            document.getElementById('nextButton').style.opacity = '0.5';
+            document.getElementById('nextButton').textContent = 
+                currentQuestion === questions.length - 1 ? 'See Results' : 'Next Question';
+        }
+
+        function updateProgressBar() {
+            const progress = (currentQuestion / questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function showResults() {
+            document.getElementById('questionContainer').classList.add('hidden');
+            document.getElementById('nextButton').classList.add('hidden');
+            document.getElementById('results').classList.remove('hidden');
+            
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const levelDisplay = document.getElementById('levelDisplay');
+            const scoreMessage = document.getElementById('scoreMessage');
+            const recommendationsList = document.getElementById('recommendationsList');
+            
+            scoreDisplay.textContent = `${score}/${questions.length}`;
+            
+            let level, message, recommendations;
+            
+            if (score <= 1) {
+                level = "Beginner";
+                message = "You're just getting started with cybersecurity awareness. Our program will help you build a strong foundation!";
+                recommendations = [
+                    "Start with our Password Security workshop",
+                    "Learn to identify phishing attempts",
+                    "Set up two-factor authentication on your accounts",
+                    "Review your social media privacy settings"
+                ];
+            } else if (score <= 3) {
+                level = "Intermediate";
+                message = "You have some cybersecurity knowledge, but there's room for improvement. Our program will help you level up!";
+                recommendations = [
+                    "Advanced threat recognition training",
+                    "Mobile device security best practices",
+                    "Network security and VPN usage",
+                    "Financial cybersecurity protection"
+                ];
+            } else {
+                level = "Advanced";
+                message = "Great job! You have solid cybersecurity awareness. Our program can help you become a campus cybersecurity advocate!";
+                recommendations = [
+                    "Join our peer educator program",
+                    "Learn about emerging threats and trends",
+                    "Develop incident response skills",
+                    "Explore cybersecurity career opportunities"
+                ];
+            }
+            
+            levelDisplay.textContent = level;
+            scoreMessage.textContent = message;
+            
+            recommendationsList.innerHTML = recommendations
+                .map(rec => `<li>${rec}</li>`)
+                .join('');
+        }
+
+        function scrollToAssessment() {
+            document.getElementById('assessment').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function enrollNow() {
+            alert('Thank you for your interest! Please contact us at cybersafe@university.edu or call (555) 123-CYBER to enroll in the next cohort.');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Initialize first question
+        displayQuestion();
+    </script>
+</body>
+</html>
